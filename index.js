@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan'; // Importar el módulo morgan
-import usuariosRouter from './routes/usuarios.js';
+import usuariosRouter from './routes/usuarios.js';  // Ajusta la ruta al archivo donde se encuentra el enrutador
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,12 +10,12 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 
 // Middleware para logging
-app.use(morgan('combined')); // Utilizaremos el formato 'combined' para logs detallados
+app.use(morgan('combined')); // Utilizamos el formato 'combined' para logs detallados
 
 // Middleware para analizar JSON
 app.use(express.json());
 
-// Rutas de tu aplicación
+// Usar las rutas de usuarios
 app.use('/api', usuariosRouter);
 
 app.listen(port, () => {

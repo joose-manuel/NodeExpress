@@ -1,18 +1,14 @@
-const mysql = require('mysql2/promise');
+import mysql from 'mysql2';
 
+// Configuración de la conexión con más tiempo de espera
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+  host: 'autorack.proxy.rlwy.net',
+  user: 'root',
+  password: 'ZRKobmgHCwCxqovVYXwzmZHQRgpHaJtJ',
+  database: 'railway',
+  port: 54392,
+  connectTimeout: 10000,  // Aumenta el tiempo de espera a 10 segundos
+  acquireTimeout: 10000,  // Aumenta el tiempo de espera para obtener una conexión del pool
 });
 
-async function getUsuarios() {
-  try {
-    const [rows] = await pool.query('SELECT * FROM usuarios');
-    return rows;
-  } catch (error) {
-    console.error('Error al obtener usuarios:', error);
-    throw error; // Re-throw the error to be handled by the calling function
-  }
-}
+export { pool };
