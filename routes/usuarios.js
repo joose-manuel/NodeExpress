@@ -1,5 +1,5 @@
 import express from 'express';
-import { getUsuarios, postUsuarios, putUsuarios, deleteUsuarios } from '../controller/controllerUsuario.js';  // Importar los controladores
+import { getUsuarios, postUsuarios, putUsuarios, deleteUsuarios,loginUsuario } from '../controller/controllerUsuario.js';  // Importar los controladores
 
 const router = express.Router();
 
@@ -14,5 +14,7 @@ router.put('/usuarios/:id', putUsuarios);
 
 // Eliminar un usuario
 router.delete('/usuarios/:id', deleteUsuarios);
+
+router.post('/login', loginUsuario);
 
 export default router;  // Exportar las rutas
